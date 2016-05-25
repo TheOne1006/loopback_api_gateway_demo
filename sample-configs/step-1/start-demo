@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+echo 'resetting pm'
+slc ctl shutdown &> /dev/null
+rm -rf ~/.strong-pm &> /dev/null
+rm -rf .strong-pm &> /dev/null
+
+echo 'building servers'
+./build-servers
+
+echo 'starting app'
+cd resource-server
+slc start
+slc ctl set-size 1 1
+node ../client

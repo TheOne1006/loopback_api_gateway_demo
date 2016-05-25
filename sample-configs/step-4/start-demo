@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+rm -rf .strong-pm
+rm -rf ~/.strong-pm
+slc ctl shutdown
+./build-servers
+cd auth-server
+slc start
+slc ctl set-size 1 1
+cd ../resource-server
+slc start
+slc ctl set-size 2 1
+cd ..
+node client

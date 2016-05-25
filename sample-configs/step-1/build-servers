@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cd resource-server && npm install
+cd ../client && npm install
